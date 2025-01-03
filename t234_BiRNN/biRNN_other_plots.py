@@ -32,10 +32,10 @@ parser.add_argument("--BiRNN_optim", type=str, choices=["RMSprop", "AdamW", "Ada
 args,unknown = parser.parse_known_args()
 
 data = np.load(f"BiRNN_K=2_2e-05_AdamW_97_15000_0.3.npy").T
-flag="acc"
+flag="loss"
 
 if flag=='acc':
-    plt.figure(figsize=(6,5))
+    plt.figure(figsize=(10,5))
     plt.plot(data[0], data[1], label="Train acc")
     plt.plot(data[0], data[2], label="Test acc")
     plt.xlabel("Optimization Epochs")
@@ -43,10 +43,10 @@ if flag=='acc':
     plt.title(f"BiRNN acc wrt Epochs for p={args.MODULUS}-K={args.K}_{args.lr}_{args.BiRNN_optim}_using{args.portion}")
     plt.xscale("log")
     plt.legend()
-    plt.savefig(f"BiRNN_{args.BiRNN_optim}_{args.MODULUS}_K={args.K}_{args.lr}_{args.epochs}_{args.portion}_acc.png")
+    plt.savefig(f"BBiRNN_K=2_2e-05_AdamW_97_15000_0.3_acc.png")
     plt.show()
 elif flag =="loss":
-    plt.figure(figsize=(6,5))
+    plt.figure(figsize=(10,5))
     plt.plot(data[0], data[3], label="Train loss")
     plt.plot(data[0], data[4], label="Test loss")
     plt.xlabel("Optimization Epochs")
@@ -54,5 +54,5 @@ elif flag =="loss":
     plt.title(f"BiRNN loss wrt Epochs for p={args.MODULUS}-K={args.K}_{args.lr}_{args.BiRNN_optim}_using{args.portion}")
     plt.xscale("log")
     plt.legend()
-    plt.savefig(f"BiRNN_{args.BiRNN_optim}_{args.MODULUS}_K={args.K}_{args.lr}_{args.epochs}_{args.portion}_loss.png")
+    plt.savefig(f"BiRNN_K=2_2e-05_AdamW_97_15000_0.3_loss.png")
     plt.show()
